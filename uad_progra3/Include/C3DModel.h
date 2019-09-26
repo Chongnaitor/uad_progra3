@@ -33,9 +33,9 @@ protected:
 	unsigned short *m_normalIndices;                                  // Dynamically-allocated array of normal indices for this model
 	unsigned short *m_UVindices;                                      // Dynamically-allocated array of UV coord indices for this model
 
-	float *m_verticesRaw;                                             // Dynamically-allocated array of vertices (raw float values)
-	float *m_normalsRaw;                                              // Dynamically-allocated array of normals (raw float values)
-	float *m_uvCoordsRaw;                                             // Dynamically-allocated array of UV coords (raw float values)
+			float *m_verticesRaw;                                             // Dynamically-allocated array of vertices (raw float values)
+			float *m_normalsRaw;                                              // Dynamically-allocated array of normals (raw float values)
+			float *m_uvCoordsRaw;                                             // Dynamically-allocated array of UV coords (raw float values)
 
 	int m_numVertices, m_numNormals, m_numUVCoords, m_numFaces;       // Total number of vertices, normals, UV coords, and faces in this model
 

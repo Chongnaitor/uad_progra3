@@ -147,6 +147,18 @@
     <ClInclude Include="Include\CLight.h">
       <Filter>Header Files\Helpers</Filter>
     </ClInclude>
+    <ClInclude Include="Include\CAppMyCube.h">
+      <Filter>Header Files\App</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\CApp_Toloide_esfera.h">
+      <Filter>Header Files\App</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\C3DModel_FBX.h">
+      <Filter>Header Files\App</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\CAppFBXLoader.h">
+      <Filter>Header Files\App</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -214,6 +226,18 @@
     </ClCompile>
     <ClCompile Include="Source\CLight.cpp">
       <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CAppMyCube.cpp">
+      <Filter>Source Files\App</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CApp_Toloide_esfera.cpp">
+      <Filter>Source Files\App</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\C3DModel_FBX.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CAppFBXLoader.cpp">
+      <Filter>Source Files\App</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

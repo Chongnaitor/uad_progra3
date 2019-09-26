@@ -10,7 +10,7 @@ using namespace std;
 
 #include "../Include/Globals.h"
 #include "../Include/C3DModel.h"
-#include "../Include/C3DModel_Obj.h"
+#include "../Include/C3DModel_FBX.h"
 #include "../Include/CTextureLoader.h"
 
 /* */
@@ -133,10 +133,10 @@ C3DModel* C3DModel::load(const char * const filename, COpenGLRenderer * const sh
 		cout << "File extension: " << fileExtension << endl;
 
 		// Now check the file type and see if it's a supported type
-		if (!fileExtension.compare("obj"))
+		if (!fileExtension.compare("fbx"))
 		{
 			cout << "Loading OBJ model..." << endl;
-			newModel = new C3DModel_Obj();
+			newModel = new C3DModel_FBX();
 			
 			if (!newModel->loadFromFile(filename))
 			{
@@ -211,7 +211,7 @@ C3DModel* C3DModel::load(const char * const filename, COpenGLRenderer * const sh
 					newModel->getNumUVCoords(),
 					newModel->getModelVertexIndices(),
 					newModel->getNumFaces(),
-					newModel->getModelNormalIndices(),
+					newModel->getModelUVCoordIndices(),
 					((newModel) ? (newModel->getNumFaces()) : 0),
 					newModel->getModelUVCoordIndices(),
 					((newModel) ? (newModel->getNumFaces()) : 0)
