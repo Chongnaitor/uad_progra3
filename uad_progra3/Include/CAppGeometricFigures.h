@@ -60,6 +60,8 @@ private:
 
 	int m_numFacesPyramid;
 	int m_renderPolygonMode;
+	unsigned int m_hexagonVertexArray;
+	int faces;
 
 protected:
 
@@ -72,12 +74,14 @@ public:
 	CAppGeometricFigures();
 	CAppGeometricFigures(int window_width, int window_height);
 	~CAppGeometricFigures();
+	
 
 	// --------------------------------------------------------------------------------------------------------------------------
 	// Inherited methods from CApp
 	// Initialize(), update(), run(), and render() are PURE VIRTUAL methods, so they need to be implemented in this DERIVED class
 	// --------------------------------------------------------------------------------------------------------------------------
-
+	CVector3 ScalePoint(CVector3& Center, int numpoint, float cellsize, bool pointy);
+	void CellGeometry();
 	// Method to initialize any objects for this class
 	void initialize();
 
@@ -89,7 +93,7 @@ public:
 
 	// Method to render the app
 	void render();
-
+	
 	// -----------------------------------------------------------------------------------------------------------------------
 	// Other inherited methods from CApp. These are optional to override.
 	// Only provide an implementation in this DERIVED class if you need them to do something different than the base class CApp

@@ -15,8 +15,8 @@ using namespace std;
 #include "Include/CAppFBXLoader.h"
 int main()
 {
-	CAppFBXLoader* Lmao = new CAppFBXLoader();
-	Lmao->run();
-	
+	CAppGeometricFigures* lmao = new CAppGeometricFigures();
+	lmao->run();
+
 }
 
