@@ -173,6 +173,7 @@
     <ClInclude Include="Include\CAppEmpty.h" />
     <ClInclude Include="Include\CAppFBXLoader.h" />
     <ClInclude Include="Include\CAppGeometricFigures.h" />
+    <ClInclude Include="Include\CAppHexGrid.h" />
     <ClInclude Include="Include\CAppMyCube.h" />
     <ClInclude Include="Include\CAppObjLoader.h" />
     <ClInclude Include="Include\CApp_Toloide_esfera.h" />
@@ -184,6 +185,7 @@
     <ClInclude Include="Include\CGameMenu.h" />
     <ClInclude Include="Include\CGameMenuItem.h" />
     <ClInclude Include="Include\CGameWindow.h" />
+    <ClInclude Include="Include\CHexGrid.h" />
     <ClInclude Include="Include\CLight.h" />
     <ClInclude Include="Include\COpenGLRenderer.h" />
     <ClInclude Include="Include\COpenGLShaderProgram.h" />
@@ -194,6 +196,7 @@
     <ClInclude Include="Include\LoadShaders.h" />
     <ClInclude Include="Include\LoadTGA.h" />
     <ClInclude Include="Include\MathHelper.h" />
+    <ClInclude Include="Source\CHexGridCell.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -212,6 +215,7 @@
     <ClCompile Include="Source\CAppEmpty.cpp" />
     <ClCompile Include="Source\CAppFBXLoader.cpp" />
     <ClCompile Include="Source\CAppGeometricFigures.cpp" />
+    <ClCompile Include="Source\CAppHexGrid.cpp" />
     <ClCompile Include="Source\CAppMyCube.cpp" />
     <ClCompile Include="Source\CAppObjLoader.cpp" />
     <ClCompile Include="Source\CApp_Toloide_esfera.cpp" />
@@ -220,6 +224,8 @@
     <ClCompile Include="Source\CGameMenu.cpp" />
     <ClCompile Include="Source\CGameMenuItem.cpp" />
     <ClCompile Include="Source\CGameWindow.cpp" />
+    <ClCompile Include="Source\CHexGrid.cpp" />
+    <ClCompile Include="Source\CHexGridCell.cpp" />
     <ClCompile Include="Source\CLight.cpp" />
     <ClCompile Include="Source\COpenGLRenderer.cpp" />
     <ClCompile Include="Source\COpenGLShaderProgram.cpp" />

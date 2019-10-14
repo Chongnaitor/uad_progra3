@@ -159,6 +159,15 @@
     <ClInclude Include="Include\CAppFBXLoader.h">
       <Filter>Header Files\App</Filter>
     </ClInclude>
+    <ClInclude Include="Source\CHexGridCell.h">
+      <Filter>Header Files\App</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\CAppHexGrid.h">
+      <Filter>Header Files\App</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\CHexGrid.h">
+      <Filter>Header Files\App</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -237,6 +246,15 @@
       <Filter>Source Files\Model</Filter>
     </ClCompile>
     <ClCompile Include="Source\CAppFBXLoader.cpp">
+      <Filter>Source Files\App</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CHexGridCell.cpp">
+      <Filter>Source Files\App</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CAppHexGrid.cpp">
+      <Filter>Source Files\App</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CHexGrid.cpp">
       <Filter>Source Files\App</Filter>
     </ClCompile>
   </ItemGroup>
