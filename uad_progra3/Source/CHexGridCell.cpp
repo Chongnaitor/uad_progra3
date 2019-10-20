@@ -1,6 +1,8 @@
 
 #include "../stdafx.h"
 #include <iostream>
+#include<istream>
+#include<fstream>
 using namespace std;
 #include"../Include/CHexGridCell.h"
 #include <assert.h>
@@ -8,6 +10,8 @@ using namespace std;
 #include "../Include/CWideStringHelper.h"
 #include "../Include/CTextureLoader.h"
 #include"../Include/CApp.h"
+#include "../Dependencies/JSON/nlohmann/json.hpp"
+
 
 
 CHexGridCell::CHexGridCell()
@@ -17,35 +21,36 @@ CHexGridCell::CHexGridCell()
 /* */
 CHexGridCell::~CHexGridCell()
 {
-	cout << "Destructor: ~CHexGridCell()" << endl;
-
-	// Free memory allocated in this class instance here
-	// =================================================
-	//
-	if (m_textureID > 0)
-	{
-		getOpenGLRenderer()->deleteTexture(&m_textureID);
-	}
-
-	if( m_hexagonVertexArray > 0)
-	{
-		getOpenGLRenderer()->freeGraphicsMemoryForObject(&m_hexagonVertexArray);
-	}
+	
 	// =================================================
 }
 
 CVector3 CHexGridCell::ScalePoint(CVector3& Center, int numpoint, float cellsize, bool pointy)
 {
 	CVector3 point;
-	float angle = 60 * numpoint - 30;
-	float angleR = angle * PI_OVER_180;
-	point.Y = 0.0f;
-	point.X = Center.X + cellsize * cos(angleR);
-	point.Z = Center.Y + cellsize * sin(angleR);
+	if (pointy == true)
+	{
+		float angle = 60 * numpoint - 30;
+		float angleR = angle * PI_OVER_180;
+		point.Y = 0.0f;
+		point.X = Center.X + cellsize * cos(angleR);
+		point.Z = Center.Y + cellsize * sin(angleR);
+		return point;
+	}
+	else 
+	{
+		float angle = 60 * numpoint ;
+		float angleR = angle * PI_OVER_180;
+		point.Y = 0.0f;
+		point.X = Center.X + cellsize * cos(angleR);
+		point.Z = Center.Y + cellsize * sin(angleR);
+		return point;
+	}
+	
 	return point;
 }
 
-void CHexGridCell::CellGeometry()
+void CHexGridCell::CellGeometry(bool Pointy)
 {
 
 	bool LetsDoThis = false;
@@ -56,12 +61,25 @@ void CHexGridCell::CellGeometry()
 	CVector3 Point_5;
 	CVector3 Point_6;
 	CVector3 Center{ 0, 0, 0 };
-	Point_1 = ScalePoint(Center, 1, 3, false);
-	Point_2 = ScalePoint(Center, 2, 3, false);
-	Point_3 = ScalePoint(Center, 3, 3, false);
-	Point_4 = ScalePoint(Center, 4, 3, false);
-	Point_5 = ScalePoint(Center, 5, 3, false);
-	Point_6 = ScalePoint(Center, 6, 3, false);
+	if (Pointy == true)
+	{
+		Point_1 = ScalePoint(Center, 1, 3, true);
+		Point_2 = ScalePoint(Center, 2, 3, true);
+		Point_3 = ScalePoint(Center, 3, 3, true);
+		Point_4 = ScalePoint(Center, 4, 3, true);
+		Point_5 = ScalePoint(Center, 5, 3, true);
+		Point_6 = ScalePoint(Center, 6, 3, true);
+	}
+	else
+	{
+		Point_1 = ScalePoint(Center, 1, 3, false);
+		Point_2 = ScalePoint(Center, 2, 3, false);
+		Point_3 = ScalePoint(Center, 3, 3, false);
+		Point_4 = ScalePoint(Center, 4, 3, false);
+		Point_5 = ScalePoint(Center, 5, 3, false);
+		Point_6 = ScalePoint(Center, 6, 3, false);
+	}
+
 	float VertexArray[18] =
 	{ Point_1.X,Point_1.Y,Point_1.Z,
 	 Point_2.X,Point_2.Y,Point_2.Z,
@@ -127,124 +145,8 @@ void CHexGridCell::CellGeometry()
 	}
 
 
-
-	/*getOpenGLRenderer()->renderObject(
-		&m_texturedModelShaderId,
-		&m_pyramidVertexArrayObject,
-		&m_textureID,
-		m_numFacesPyramid,
-		color,
-		&modelMatrix2,
-		COpenGLRenderer::EPRIMITIVE_MODE::TRIANGLES,
-		false
-	);*/
 }
 
 
-void CHexGridCell::initialize()
-{
-	// Initialize app-specific stuff here
-	// ==================================
-	//
-	// Get shader for color objects
-	// -------------------------------------------------------------------------------------------------------------
 
-	m_colorModelShaderId = getOpenGLRenderer()->getShaderProgramID(SHADER_PROGRAM_COLOR_OBJECT);
-
-	if (m_colorModelShaderId == 0)
-	{
-		cout << "ERROR: Unable to load color shader" << endl;
-		return;
-	}
-
-	// Get shader for textured objects
-	// -------------------------------------------------------------------------------------------------------------
-
-	m_texturedModelShaderId = getOpenGLRenderer()->getShaderProgramID(SHADER_PROGRAM_TEXTURED_OBJECT);
-
-	if (m_texturedModelShaderId == 0)
-	{
-		cout << "ERROR: Unable to load texture shader" << endl;
-		return;
-	}
-
-	// Texture
-	// Load texture file, create OpenGL Texture Object
-	// -------------------------------------------------------------------------------------------------------------
-	std::wstring wresourceFilenameTexture;
-	std::string resourceFilenameTexture;
-
-	// Check texture file exists for the textured cube
-	if (!CWideStringHelper::GetResourceFullPath(MC_LEAVES_TEXTURE, wresourceFilenameTexture, resourceFilenameTexture))
-	{
-		cout << "ERROR: Unable to find one or more resources: " << endl;
-		cout << "  " << MC_LEAVES_TEXTURE << endl;
-		return;
-	}
-
-	// Initialize the texture
-	m_textureID = 0;
-	if (!CTextureLoader::loadTexture(resourceFilenameTexture.c_str(), &m_textureID, getOpenGLRenderer()))
-	{
-		cout << "ERROR: Unable load texture:" << endl;
-		cout << "  " << MC_LEAVES_TEXTURE << endl;
-		return;
-	}
-
-	m_initialized = true;
-	//createPyramidGeometry();
-	CellGeometry();
-}
-
-
-void CHexGridCell::render()
-{
-	CGameMenu* menu = getMenu();
-
-	// If menu is active, render menu
-	if (menu != NULL
-		&& menu->isInitialized()
-		&& menu->isActive())
-	{
-		//...
-	}
-	else // Otherwise, render app-specific stuff here...
-	{
-		// =================================
-		//
-		// White 
-		// Colors are in the 0..1 range, if you want to use RGB, use (R/255, G/255, G/255)
-		float color[3] = { 1.0f, 1.0f, 1.0f };
-		unsigned int noTexture = 0;
-		double totalDegreesRotatedRadians = m_objectRotation * 3.1459 / 180.0;
-		// convert total degrees rotated to radians;
-
-		// Get a matrix that has both the object rotation and translation
-		MathHelper::Matrix4 modelMatrix = MathHelper::SimpleModelMatrixRotationTranslation((float)totalDegreesRotatedRadians, m_objectPosition);
-
-		if (m_hexagonVertexArray > 0 && faces > 0)
-		{
-			CVector3 pos2 = m_objectPosition;
-			pos2 += CVector3(3.0f, 0.0f, 0.0f);
-			MathHelper::Matrix4 modelMatrix2 = MathHelper::SimpleModelMatrixRotationTranslation((float)totalDegreesRotatedRadians, pos2);
-
-			// Render pyramid in the first position, using the color shader
-			getOpenGLRenderer()->renderObject(
-				&m_colorModelShaderId,
-				&m_hexagonVertexArray,
-				&noTexture,
-				faces,
-				color,
-				&modelMatrix,
-				COpenGLRenderer::EPRIMITIVE_MODE::TRIANGLES,
-				false
-			);
-
-			// Render same pyramid (same vertex array object identifier), in a second position, but this time with a texture
-			
-		}
-
-		// =================================
-	}
-}
 

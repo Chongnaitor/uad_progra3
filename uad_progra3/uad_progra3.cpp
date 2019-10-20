@@ -10,8 +10,7 @@ using namespace std;
 
 int main()
 {
-	CHexGrid lmao;
-	lmao.ReadJSON("Resources/MEDIA/HEXGRID/hexgrid_cfg.json");
+
 
 	return 0;
 }
