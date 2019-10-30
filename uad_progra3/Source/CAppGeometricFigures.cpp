@@ -424,7 +424,7 @@ void CAppGeometricFigures::render()
 		unsigned int noTexture = 0;
 	
 		// convert total degrees rotated to radians;
-		double totalDegreesRotatedRadians = m_objectRotation * 3.1459 / 180.0;
+		double totalDegreesRotatedRadians = 0;
 
 		// Get a matrix that has both the object rotation and translation
 		MathHelper::Matrix4 modelMatrix = MathHelper::SimpleModelMatrixRotationTranslation((float)totalDegreesRotatedRadians, m_objectPosition);

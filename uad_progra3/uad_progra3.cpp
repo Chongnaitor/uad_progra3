@@ -2,16 +2,18 @@
 //
 
 #include "stdafx.h"
+#include "Dependencies/JSON/nlohmann/json.hpp"
 #include <iostream>
-using namespace std;
+#include <fstream>
+#include<../CAppHexGrid.h>
+#include<../CAppGeometricFigures.h>
 
-#include "Include/CApp.h"
-#include"Include/CHexGrid.h"
 
 int main()
 {
-
-
-	return 0;
+	CAppHexGrid* Lmao = new CAppHexGrid();
+	Lmao->run();
+	delete Lmao;
 }
 
+//C:\Users\Chong\Documents\Cuarto Cuatrimestre\Programacion III\uad_progra3\Resources\MEDIA\HEXGRID

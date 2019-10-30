@@ -5,7 +5,7 @@
 
 #include "../Include/Globals.h"
 #include "../Include/CApp.h""
-
+#include"../Include/COpenGLRenderer.h"
 
 /* ******************************************************************************************************************************************
 * This class shows an example of how to manually allocate GRAPHICS memory for a 3D object.
@@ -19,12 +19,11 @@
 // Class that inherits from Base class CApp
 // Base class CApp has members for: CGameWindow, CGameMenu, and COpenGLRenderer, which we can access through the public/protected methods
 // --------------------------------------------------------------------------------------------------------------------------------------
-struct CHexGridCell : public CApp
+struct CHexGridCell 
 {
 
 
-	bool m_initialized;
-
+	
 	// Variables used for controlling the rotation and object position
 	// ---------------------------------------------------------------
 
@@ -32,65 +31,8 @@ struct CHexGridCell : public CApp
 	// Current object position
 	CVector3 m_objectPosition;
 
-	//  Object rotation speed (degrees per second)
-
-
-	// Variables used for storing OpenGL identifiers
-	// ---------------------------------------------------------------
-
-	// OpenGL Shader Program for the color-only object
-	unsigned int m_colorModelShaderId;
-
-	// OpenGL Shader Program for the textured object
-	unsigned int m_texturedModelShaderId;
-
-
-	// Identifier for the OpenGL Texture Object 
-	unsigned int m_textureID;
-
-
-	int m_renderPolygonMode;
-	unsigned int m_hexagonVertexArray;
-	int faces;
-	double m_objectRotation;
-
-	// Constructors and destructor
-	CHexGridCell();
-	~CHexGridCell();
-	void initialize()
-	{
-		std::cout<<"Not doing a thing";
-	}
-	void update(double deltaTime){
-		std::cout << "Not doing a thing";
-	}
-	bool initializeMenu()
-	{
-		std::cout << "Not doing a thing";
-		return false;
-	}
-
-	// Method to update any objecs based on time elapsed since last frame
-
-	// Method to run the app
-	void run(){}
-
-	// Method to render the app
-	void render(){}
-
-	// --------------------------------------------------------------------------------------------------------------------------
-	// Inherited methods from CApp
-	// Initialize(), update(), run(), and render() are PURE VIRTUAL methods, so they need to be implemented in this DERIVED class
-	// --------------------------------------------------------------------------------------------------------------------------
-	CVector3 ScalePoint(CVector3& Center, int numpoint, float cellsize, bool pointy);
-	void CellGeometry(bool Pointy);
-	// Method to initialize any objects for this class
-
-
-	// Method to update any objecs based on time elapsed since last frame
-
-
-	// Method to render the app
+	
+	CVector3 ScalePoint(CVector3 Center, int numpoint, float cellsize, bool pointy);
 	
 
 	
