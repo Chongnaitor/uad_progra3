@@ -154,19 +154,38 @@ void CAppHexGrid::render()
 			{
 				for (int i = 0; i<m_Grid.m_Columnas; i++)
 				{
-					MathHelper::Matrix4 modelMatrix2 = MathHelper::SimpleModelMatrixRotationTranslation(0, m_Grid.Centros[j][i]);
+					if (m_Grid.Orientacion == "pointy") 
+					{
 
-					// Render pyramid in the first position, using the color shader
-					getOpenGLRenderer()->renderObject(
-						&m_colorModelShaderId,
-						&m_Grid.m_hexagonVertexArray,
-						&noTexture,
-						m_Grid.faces,
-						color,
-						&modelMatrix2,
-						COpenGLRenderer::EPRIMITIVE_MODE::TRIANGLES,
-						false
-					);
+				        
+				        MathHelper::Matrix4 modelMatrix2 = MathHelper::SimpleModelMatrixRotationTranslation(0, m_Grid.Centros[j][i]*0.1f);
+				        
+				        // Render pyramid in the first position, using the color shader
+				        getOpenGLRenderer()->renderObject(
+				        	&m_colorModelShaderId,
+				        	&m_Grid.m_hexagonVertexArray,
+				        	&noTexture,
+				        	m_Grid.faces,
+				        	color,
+				        	&modelMatrix2,
+				        	COpenGLRenderer::EPRIMITIVE_MODE::TRIANGLES,
+				        	false);
+					}
+					else
+					{
+						MathHelper::Matrix4 modelMatrix2 = MathHelper::SimpleModelMatrixRotationTranslation(0, m_Grid.Centros[i][j]*0.5f);
+
+						// Render pyramid in the first position, using the color shader
+						getOpenGLRenderer()->renderObject(
+							&m_colorModelShaderId,
+							&m_Grid.m_hexagonVertexArray,
+							&noTexture,
+							m_Grid.faces,
+							color,
+							&modelMatrix2,
+							COpenGLRenderer::EPRIMITIVE_MODE::TRIANGLES,
+							false);
+					}
 				}
 			}
 	

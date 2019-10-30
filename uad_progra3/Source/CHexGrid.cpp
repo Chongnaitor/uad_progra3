@@ -102,34 +102,76 @@ void CHexGrid::CreateGeometry(COpenGLRenderer* const Lmao, unsigned int m_colorM
 
 void CHexGrid::FilasPorColumnas(COpenGLRenderer* const Lmao, unsigned int m_colorModelShaderId, bool Pointy)
 {
-	float Width=(sqrt(3)*m_CellSize);
+	float Width = (sqrt(3) * m_CellSize);
 	float Heihgt = (2 * m_CellSize);
-	CVector3 PosicionInicial(0.0f,0.0f,0.0f);
-	CreateGeometry(Lmao,m_colorModelShaderId,Pointy);
-	for (int i = 0; i < m_Filas; i++)
+	CVector3 PosicionInicial(0.0f, 0.0f, 0.0f);
+	if (Pointy == true)
 	{
-		std::vector<CVector3>Temp;
 
-		for (int j = 0; j < m_Columnas; j++)
+		
+		CreateGeometry(Lmao, m_colorModelShaderId, Pointy);
+		for (int i = 0; i < m_Filas; i++)
 		{
+			std::vector<CVector3>Temp;
 
-			Temp.push_back(PosicionInicial);
-		
-			PosicionInicial.X = PosicionInicial.X + Width;
+			for (int j = 0; j < m_Columnas; j++)
+			{
+
+				Temp.push_back(PosicionInicial);
+
+				PosicionInicial.X = PosicionInicial.X + Width;
+			}
+
+			Centros.push_back(Temp);
+			if (i % 2)
+			{
+				PosicionInicial.X = 0.0f;
+			}
+			else
+			{
+				PosicionInicial.X = Width / 2;
+			}
+			PosicionInicial.Z += Heihgt * (0.75f);
 		}
-		
-		Centros.push_back(Temp);
-		if (i % 2)
-		{
-			PosicionInicial.X = 0.0f;
-		}
-		else
-		{
-			PosicionInicial.X =  Width / 2;
-		}
-		PosicionInicial.Z += Heihgt * (0.75f);
+
+
+
+
+
+
 	}
+	else if(Pointy!=true)
+	{
 
+		
+		CreateGeometry(Lmao, m_colorModelShaderId, Pointy);
+		for (int i = 0; i < m_Filas; i++)
+		{
+			std::vector<CVector3>Temp;
+
+			for (int j = 0; j < m_Columnas; j++)
+			{
+
+				Temp.push_back(PosicionInicial);
+
+				PosicionInicial.Z = PosicionInicial.Z + Width;
+			}
+
+			Centros.push_back(Temp);
+			if (i % 2)
+			{
+				PosicionInicial.Z = 0.0f;
+			}
+			else
+			{
+				PosicionInicial.Z = Width/2;
+			}
+			PosicionInicial.X += Heihgt*(0.75);
+		}
+
+
+	}
+	
 
 		 
 
