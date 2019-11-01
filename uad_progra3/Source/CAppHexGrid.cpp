@@ -158,7 +158,7 @@ void CAppHexGrid::render()
 					{
 
 				        
-				        MathHelper::Matrix4 modelMatrix2 = MathHelper::SimpleModelMatrixRotationTranslation(0, m_Grid.Centros[j][i]*0.1f);
+				        MathHelper::Matrix4 modelMatrix2 = MathHelper::SimpleModelMatrixRotationTranslation(0, m_Grid.Centros[j][i]);
 				        
 				        // Render pyramid in the first position, using the color shader
 				        getOpenGLRenderer()->renderObject(
@@ -173,7 +173,7 @@ void CAppHexGrid::render()
 					}
 					else
 					{
-						MathHelper::Matrix4 modelMatrix2 = MathHelper::SimpleModelMatrixRotationTranslation(0, m_Grid.Centros[i][j]*0.5f);
+						MathHelper::Matrix4 modelMatrix2 = MathHelper::SimpleModelMatrixRotationTranslation(0, m_Grid.Centros[i][j]);
 
 						// Render pyramid in the first position, using the color shader
 						getOpenGLRenderer()->renderObject(
