@@ -19,9 +19,6 @@
     <Filter Include="Header Files\App">
       <UniqueIdentifier>{6bfd7d47-b8e0-46c4-b03e-3c591c946cbc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\DataStructures">
-      <UniqueIdentifier>{16c42b78-e975-46b0-a857-d11d7f84d011}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\DataStructures">
       <UniqueIdentifier>{5942c680-0b21-4f06-ae7d-cf7eb66d6247}</UniqueIdentifier>
     </Filter>
@@ -61,6 +58,9 @@
     <Filter Include="Source Files\Helpers">
       <UniqueIdentifier>{a548ce66-7199-4e73-8d1f-73a12c879a06}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Graphics\DataStructures">
+      <UniqueIdentifier>{16c42b78-e975-46b0-a857-d11d7f84d011}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -82,16 +82,16 @@
       <Filter>Header Files\App</Filter>
     </ClInclude>
     <ClInclude Include="Include\CBinaryTree.h">
-      <Filter>Header Files\DataStructures</Filter>
+      <Filter>Header Files\Graphics\DataStructures</Filter>
     </ClInclude>
     <ClInclude Include="Include\CBinaryTreeNode.h">
-      <Filter>Header Files\DataStructures</Filter>
+      <Filter>Header Files\Graphics\DataStructures</Filter>
     </ClInclude>
     <ClInclude Include="Include\CCircularDoubleLinkedList.h">
-      <Filter>Header Files\DataStructures</Filter>
+      <Filter>Header Files\Graphics\DataStructures</Filter>
     </ClInclude>
     <ClInclude Include="Include\CCircularDoubleLinkedListNode.h">
-      <Filter>Header Files\DataStructures</Filter>
+      <Filter>Header Files\Graphics\DataStructures</Filter>
     </ClInclude>
     <ClInclude Include="Include\COpenGLRenderer.h">
       <Filter>Header Files\Graphics</Filter>
@@ -167,6 +167,18 @@
     </ClInclude>
     <ClInclude Include="Include\CHexGrid.h">
       <Filter>Header Files\App</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\CQuadTreeNode.h">
+      <Filter>Header Files\Graphics\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\CCamera.h">
+      <Filter>Source Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\CAppQuadTree.h">
+      <Filter>Header Files\App</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\AABB.h">
+      <Filter>Header Files\Graphics\DataStructures</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

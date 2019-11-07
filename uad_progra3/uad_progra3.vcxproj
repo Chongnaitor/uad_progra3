@@ -165,6 +165,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Include\AABB.h" />
     <ClInclude Include="Include\C3DModel.h" />
     <ClInclude Include="Include\C3DModel_FBX.h" />
     <ClInclude Include="Include\C3DModel_Obj.h" />
@@ -176,9 +177,11 @@
     <ClInclude Include="Include\CAppHexGrid.h" />
     <ClInclude Include="Include\CAppMyCube.h" />
     <ClInclude Include="Include\CAppObjLoader.h" />
+    <ClInclude Include="Include\CAppQuadTree.h" />
     <ClInclude Include="Include\CApp_Toloide_esfera.h" />
     <ClInclude Include="Include\CBinaryTree.h" />
     <ClInclude Include="Include\CBinaryTreeNode.h" />
+    <ClInclude Include="Include\CCamera.h" />
     <ClInclude Include="Include\CCircularDoubleLinkedList.h" />
     <ClInclude Include="Include\CCircularDoubleLinkedListNode.h" />
     <ClInclude Include="Include\CColor.h" />
@@ -189,6 +192,7 @@
     <ClInclude Include="Include\CLight.h" />
     <ClInclude Include="Include\COpenGLRenderer.h" />
     <ClInclude Include="Include\COpenGLShaderProgram.h" />
+    <ClInclude Include="Include\CQuadTreeNode.h" />
     <ClInclude Include="Include\CTextureLoader.h" />
     <ClInclude Include="Include\CVector3.h" />
     <ClInclude Include="Include\CWideStringHelper.h" />
