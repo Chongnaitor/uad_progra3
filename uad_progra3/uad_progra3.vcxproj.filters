@@ -177,7 +177,13 @@
     <ClInclude Include="Include\CAppQuadTree.h">
       <Filter>Header Files\App</Filter>
     </ClInclude>
-    <ClInclude Include="Include\AABB.h">
+    <ClInclude Include="Include\CPlane.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\CFrustum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\AABB_2D.h">
       <Filter>Header Files\Graphics\DataStructures</Filter>
     </ClInclude>
   </ItemGroup>
@@ -268,6 +274,24 @@
     </ClCompile>
     <ClCompile Include="Source\CHexGrid.cpp">
       <Filter>Source Files\App</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CAppQuadTree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Include\CQuadTreeNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CQuadTree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CFrustum.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CPlane.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Include\CCamera.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

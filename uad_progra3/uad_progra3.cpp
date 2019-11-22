@@ -11,9 +11,7 @@
 
 int main()
 {
-	CAppHexGrid* Lmao = new CAppHexGrid();
-	Lmao->run();
-	delete Lmao;
+	int* Arreglo = new int[50];
 }
 
 //C:\Users\Chong\Documents\Cuarto Cuatrimestre\Programacion III\uad_progra3\Resources\MEDIA\HEXGRID
