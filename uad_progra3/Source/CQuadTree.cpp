@@ -2,32 +2,21 @@
 #include"../Include/CQuadTreeNode.h"
 #include <iostream>
 
-void CQuadTree::Initialize()
+void CQuadTree::Subdivide(std::vector<CHexGridCell>* HexTotalCells, AABB_2D aabb)
 {
-	int data = 4;
-	
-	if (m_Root==nullptr)
-	{
-		AddData(m_Root,data);
-	}
-	else
-	{
-		if (m_Root->SectorOne==nullptr)
+
+
+		if (m_Root == nullptr)
 		{
-
+			m_Root = new CQuadTreeNode();
+			m_Root->SetLimits(aabb);
+			m_Root->Subdivide(HexTotalCells, m_SubDivisionLimit);
 		}
+	
 
-	}
 }
-void CQuadTree::AddData(CQuadTreeNode*&Data,int Dato)
-{
-	if (m_Root == nullptr)
-	{
-		m_Root->ExampleValue = Dato;
 
-	}
-	else
-	{
-		Data->ExampleValue = Dato;
-	}
+CHexGridCell* CQuadTree::Render(CCamara* Cam)
+{
+	return nullptr;
 }

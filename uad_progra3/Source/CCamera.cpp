@@ -1,5 +1,5 @@
-#include "CCamera.h"
-#include"CFrustum.h"
+#include "../Include/CCamera.h"
+#include"../Include/CFrustum.h"
 
 bool CCamara::isAABBVisibile(AABB_2D& AABB)
 {

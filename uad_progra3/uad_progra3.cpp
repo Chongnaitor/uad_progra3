@@ -7,11 +7,11 @@
 #include <fstream>
 #include<../CAppHexGrid.h>
 #include<../CAppGeometricFigures.h>
-
+#include<../CAppQuadTree.h>
 
 int main()
 {
-	int* Arreglo = new int[50];
+	return 0;
 }
 
 //C:\Users\Chong\Documents\Cuarto Cuatrimestre\Programacion III\uad_progra3\Resources\MEDIA\HEXGRID

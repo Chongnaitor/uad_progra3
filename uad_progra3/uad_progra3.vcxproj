@@ -213,8 +213,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Include\CCamera.cpp" />
-    <ClCompile Include="Include\CQuadTreeNode.cpp" />
+    <ClCompile Include="Source\AABB_2D.cpp" />
+    <ClCompile Include="Source\CQuadTreeNode.cpp" />
     <ClCompile Include="Source\C3DModel.cpp" />
     <ClCompile Include="Source\C3DModel_FBX.cpp" />
     <ClCompile Include="Source\C3DModel_Obj.cpp" />
@@ -228,6 +228,7 @@
     <ClCompile Include="Source\CAppObjLoader.cpp" />
     <ClCompile Include="Source\CAppQuadTree.cpp" />
     <ClCompile Include="Source\CApp_Toloide_esfera.cpp" />
+    <ClCompile Include="Source\CCamera.cpp" />
     <ClCompile Include="Source\CCircularDoubleLinkedList.cpp" />
     <ClCompile Include="Source\CCircularDoubleLinkedListNode.cpp" />
     <ClCompile Include="Source\CFrustum.cpp" />

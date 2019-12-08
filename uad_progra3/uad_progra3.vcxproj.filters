@@ -278,9 +278,6 @@
     <ClCompile Include="Source\CAppQuadTree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Include\CQuadTreeNode.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\CQuadTree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -290,7 +287,13 @@
     <ClCompile Include="Source\CPlane.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Include\CCamera.cpp">
+    <ClCompile Include="Source\CCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CQuadTreeNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\AABB_2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

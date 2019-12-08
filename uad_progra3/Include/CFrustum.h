@@ -9,7 +9,8 @@
 #include "CVector3.h"
 #include "CPlane.h"
 
-/*
+/*ES PURA CALIDAD
+daads
 */
 class CFrustum
 {
@@ -50,7 +51,6 @@ public:
 	CFrustum();
 	~CFrustum();
 
-	FRUSTUM_VISIBILITY_TEST_RESULT isAABBVisible(AABB_2D &AABB);
 	FRUSTUM_VISIBILITY_TEST_RESULT isAABBVisible(AABB_2D &AABB);
 	FRUSTUM_VISIBILITY_TEST_RESULT isPointVisible(CVector3 &point);
 

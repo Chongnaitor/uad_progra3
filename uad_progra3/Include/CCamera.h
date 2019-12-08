@@ -3,8 +3,9 @@
 #include "AABB_2D.h"
 #include "MathHelper.h"
 #include "CFrustum.h"
+
 class CCamara {
-private:
+public:
 	float m_fov;
 	CVector3 Position;
 	CVector3 LookAt;
@@ -20,7 +21,7 @@ private:
 	bool m_cacheValid;
 	int m_frameBufferWidth,
 		m_frameBufferHeight;
-
+	
 	float m_fieldOfView,
 		m_nearPlane = 0.5,
 		m_farPlane = 1000;
@@ -29,15 +30,15 @@ private:
 		m_viewMatrix;
 	CFrustum m_viewFrustum;
 
-	void update(float deltaTime);
+	void update(float deltaTime){}
 
-	void moveForward(float deltaMove); //mover la camara sobre vector lookAt 
+	void moveForward(float deltaMove) {} //mover la camara sobre vector lookAt 
 
-		void moveUp(float deltaMove);  //mover la camara sobre vector up 
+	void moveUp(float deltaMove) {}  //mover la camara sobre vector up 
 
-		void strafe(float deltaMove);//mover la camara sobre vector right 
+	void strafe(float deltaMove) {}//mover la camara sobre vector right 
 
-		void orbitAroundLookAt(float deltaMove);//punto extra 
+	void orbitAroundLookAt(float deltaMove) {}//punto extra 
 
 
 
@@ -45,8 +46,8 @@ private:
 	//get para m_eyePos, m_lookAt, m_Up 
 
 
-	void recalculateViewMatrix();
-	void recalculateViewFrustum();
+	void recalculateViewMatrix() {}
+	void recalculateViewFrustum() {}
 	
 
 
