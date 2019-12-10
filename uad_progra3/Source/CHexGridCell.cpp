@@ -24,6 +24,10 @@ CVector3 CHexGridCell::ScalePoint(CVector3  Center, int numpoint, float cellsize
 	CVector3 point;
 	if (pointy == true)
 	{
+		if (Tamaño == 0.0f)
+		{
+			Assignvalues(cellsize, pointy);
+		}
 		float angle = 60 * numpoint - 30;
 		float angleR = angle * PI_OVER_180;
 		point.Y = 0.0f;
@@ -33,6 +37,10 @@ CVector3 CHexGridCell::ScalePoint(CVector3  Center, int numpoint, float cellsize
 	}
 	else 
 	{
+		if (Tamaño == 0.0f)
+		{
+			Assignvalues(cellsize, pointy);
+		}
 		float angle = 60 * numpoint ;
 		float angleR = angle * PI_OVER_180;
 		point.Y = 0.0f;
@@ -42,6 +50,17 @@ CVector3 CHexGridCell::ScalePoint(CVector3  Center, int numpoint, float cellsize
 	}
 	
 	return point;
+}
+
+void CHexGridCell::Assignvalues(float size, bool ispointy)
+{
+	Tamaño = size;
+	Pointy = ispointy;
+}
+
+int CHexGridCell::GetTrinagles()
+{
+	return 4;
 }
 
 

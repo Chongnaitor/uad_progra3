@@ -222,7 +222,7 @@ CFrustum::FRUSTUM_VISIBILITY_TEST_RESULT CFrustum::isAABBVisible(AABB_2D &aabb)
 	// If any of the 4 corners of the AABB is INSIDE ALL PLANES of the frustum, then the AABB is at least partially visible
 	for (int i = 0; i < totalCorners; ++i)
 	{
-		if (isPointVisible(aabb.m_points[i]) == FRUSTUM_VISIBILITY_TEST_RESULT::INSIDE)
+		if (isPointVisible(aabb.corners[i]) == FRUSTUM_VISIBILITY_TEST_RESULT::INSIDE)
 		{
 			++visibleCorners;
 		}
@@ -256,7 +256,7 @@ CFrustum::FRUSTUM_VISIBILITY_TEST_RESULT CFrustum::isAABBVisible(AABB_2D &aabb)
 			// For each corner of the AABB
 			for (int j = 0; j < totalCorners; ++j)
 			{
-				if (m_planes[i].distanceToPoint(aabb.m_points[j]) < 0.0f)
+				if (m_planes[i].distanceToPoint(aabb.corners[j]) < 0.0f)
 				{
 					++numCornersOutside;
 				}

@@ -10,7 +10,7 @@ void CQuadTree::Subdivide(std::vector<CHexGridCell>* HexTotalCells, AABB_2D aabb
 		{
 			m_Root = new CQuadTreeNode();
 			m_Root->SetLimits(aabb);
-			m_Root->Subdivide(HexTotalCells, m_SubDivisionLimit);
+			m_Root->Subdivide(HexTotalCells, m_SubDivisionLimit,aabb);
 		}
 	
 

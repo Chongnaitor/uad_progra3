@@ -34,8 +34,11 @@ struct CHexGridCell
 	
 	CVector3 ScalePoint(CVector3 Center, int numpoint, float cellsize, bool pointy);
 	
+	void Assignvalues(float size, bool ispointy);
 
-	
+	int GetTrinagles();
+	float Tamaño=0.0f;
+	bool Pointy;
 
 };
 
