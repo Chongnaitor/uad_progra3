@@ -10,7 +10,6 @@ public:
 	void setCorners(CVector3* inCorners);
 	bool pointsInside(CVector3[4]);
 	CVector3 corners[4];  
-	CVector3 m_points[4];
-
+	
 
 };
