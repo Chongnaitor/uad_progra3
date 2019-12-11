@@ -4,14 +4,14 @@ CQuadTreeNode::CQuadTreeNode()
 {
 }
 ////////////////////
-void CQuadTreeNode::Subdivide(std::vector<CHexGridCell*> HexTotalCells,  int QuadTreeLimits,AABB_2D Lmao)
+void CQuadTreeNode::Subdivide(std::vector<CVector3*> HexTotalCells,  int QuadTreeLimits,AABB_2D Lmao, int currlimit, int maxlimit)
 {
 	int triCount = 0;
 	for (int i = 0; i < HexTotalCells.size(); ++i)
 	{
-		//&triCount += HexTotalCells[i]->getTriangleCount();
+		triCount += 4;
 	}
-	if (HexTotalCells.size() == 1 || triCount < QuadTreeLimits)
+	if (HexTotalCells.size() == 1 || triCount < QuadTreeLimits || currlimit >= maxlimit)
 	{
 		//copiar elementos
 		HexTotalCellsB = HexTotalCells;
@@ -50,49 +50,53 @@ void CQuadTreeNode::Subdivide(std::vector<CHexGridCell*> HexTotalCells,  int Qua
 		SectorOne = new CQuadTreeNode();
 		SectorOne->SetLimits(childBounds[0]);
 		//same for all the other ones 
-		std::vector<CHexGridCell*>ChildCells[4];
+		std::vector<CVector3*>ChildCells[4];
+		for (int i = 0; i < HexTotalCells.size(); i++)
 		{
-			for (int i = 0; i < HexTotalCells.size(); i++)
+			CHexGridCell CualquierCelda;
+			CVector3* cell = HexTotalCells[i];
+			CualquierCelda.m_objectPosition = *cell;
+			CVector3 Coners[6];
+			for (int k = 1; k < 7; k++)
 			{
-				CHexGridCell* cell = HexTotalCells[i];
-				CVector3 Coners[4];
-				if (childBounds[0].pointsInside(Coners))
-				{
+				Coners[k] = CualquierCelda.ScalePoint(CualquierCelda.m_objectPosition, k, 1.0f, true);
+			}
+			if (childBounds[0].pointsInside(Coners))
+			{
+				ChildCells->push_back(cell);
+			}
+			if (childBounds[1].pointsInside(Coners))
+			{
 					ChildCells->push_back(cell);
-				}
-				else if (childBounds[1].pointsInside(Coners))
-				{
-					ChildCells->push_back(cell);
-				}
-				else if (childBounds[2].pointsInside(Coners))
-				{
-					ChildCells->push_back(cell);
-				}
-				else if (childBounds[3].pointsInside(Coners))
-				{
-					ChildCells->push_back(cell);
-				}
+			}
+			if (childBounds[2].pointsInside(Coners))
+			{
+				ChildCells->push_back(cell);
+			}
+			if (childBounds[3].pointsInside(Coners))
+			{
+				ChildCells->push_back(cell);
 			}
 		}
-		SectorOne->Subdivide(ChildCells[0], QuadTreeLimits,childBounds[0]);
-		SectorTwo->Subdivide(ChildCells[1], QuadTreeLimits,childBounds[1]);
-		SectorTree->Subdivide(ChildCells[2], QuadTreeLimits,childBounds[2]);
-		SectorFor->Subdivide(ChildCells[3], QuadTreeLimits,childBounds[3]);
+		SectorOne->Subdivide(ChildCells[0], QuadTreeLimits,childBounds[0], currlimit + 1, maxlimit);
+		SectorTwo->Subdivide(ChildCells[1], QuadTreeLimits,childBounds[1], currlimit + 1, maxlimit);
+		SectorTree->Subdivide(ChildCells[2], QuadTreeLimits,childBounds[2], currlimit + 1, maxlimit);
+		SectorFor->Subdivide(ChildCells[3], QuadTreeLimits,childBounds[3], currlimit + 1, maxlimit);
 	}
 }
 
-void CQuadTreeNode::Subdivide2(std::vector<std::vector<CHexGridCell>> HexTotalCells, int QuadTreeBounds, AABB_2D parentBounds)
+void CQuadTreeNode::Subdivide2(std::vector<std::vector<CVector3>> HexTotalCells, int QuadTreeBounds, AABB_2D parentBounds, int currlimit, int maxlimit)
 {
 	int triCount = 0;
 	for (int i = 0; i < HexTotalCells.size(); ++i)
 	{
 		for (int j = 0; j < HexTotalCells[i].size(); j++)
 		{
-			triCount += HexTotalCells[i][j].GetTrinagles();
+			triCount += 4;
 		}
 		
 	}
-	if ((HexTotalCells.size() * HexTotalCells[0].size())== 1 || triCount < QuadTreeBounds)
+	if ((HexTotalCells.size() * HexTotalCells[0].size())== 1 || triCount < QuadTreeBounds || currlimit >= maxlimit)
 	{
 		
 		DataCopy = HexTotalCells;
@@ -143,30 +147,46 @@ void CQuadTreeNode::Subdivide2(std::vector<std::vector<CHexGridCell>> HexTotalCe
 		SectorFor = new CQuadTreeNode();
 		SectorFor->SetLimits(childBounds[3]);
 
+		CVector3* cell;
+
 		//same for all the other ones 
-		std::vector<CHexGridCell *>ChildCells[4];
+		std::vector<CVector3 *>ChildCells[4];
 			for (int i = 0; i < HexTotalCells.size(); i++)
 			{
 				for (int j = 0; j < HexTotalCells[i].size(); j++)
 				{
-					CHexGridCell * cell = &HexTotalCells[i][j];
+					CHexGridCell CeldaCualquiera;
+					cell = &HexTotalCells[i][j];
+					CeldaCualquiera.m_objectPosition = *cell;
 					CVector3 Coners[6];
 					for (int x = 1; x < 7; x++)
 					{
-						Coners[x] = cell->ScalePoint(cell->m_objectPosition, x, cell->Pointy, cell->Tamaño);
+						Coners[x] = CeldaCualquiera.ScalePoint(CeldaCualquiera.m_objectPosition, x, 1.0f, true);
 					}
 					if (childBounds[0].pointsInside(Coners))
 					{
 						ChildCells[0].push_back(cell);
 					}
+					if (childBounds[1].pointsInside(Coners))
+					{
+						ChildCells[1].push_back(cell);
+					}
+					if (childBounds[2].pointsInside(Coners))
+					{
+						ChildCells[2].push_back(cell);
+					}
+					if (childBounds[3].pointsInside(Coners))
+					{
+						ChildCells[3].push_back(cell);
+					}
 				//some ifs
 				}
 				
 			}
-			SectorOne->Subdivide(ChildCells[0], QuadTreeBounds, childBounds[0]);
-			SectorTwo->Subdivide(ChildCells[1],QuadTreeBounds,childBounds[1]);
-			SectorTree->Subdivide(ChildCells[2],QuadTreeBounds,childBounds[2]);
-			SectorFor->Subdivide(ChildCells[3],QuadTreeBounds,childBounds[3]);
+			SectorOne->Subdivide(ChildCells[0], QuadTreeBounds, childBounds[0], currlimit + 1, maxlimit);
+			SectorTwo->Subdivide(ChildCells[1],QuadTreeBounds,childBounds[1], currlimit + 1, maxlimit);
+			SectorTree->Subdivide(ChildCells[2],QuadTreeBounds,childBounds[2], currlimit + 1, maxlimit);
+			SectorFor->Subdivide(ChildCells[3],QuadTreeBounds,childBounds[3], currlimit + 1, maxlimit);
 	}
 }
 
@@ -220,5 +240,11 @@ void CQuadTreeNode::render(COpenGLRenderer* Puntero, unsigned int ModelShad)
 
 bool CQuadTreeNode::isRender(COpenGLRenderer* PumteroJr, unsigned int Lmao)
 {
-	bool isRenderjr;
+	bool esamadre;
+	esamadre = PumteroJr->allocateGraphicsMemoryForObject(&Lmao, &VertexArray, Vertices, 4, Normal, 2, UV, 4, Index, 2, NormalIndex, 2, Index, 2);
+	if (!esamadre)
+	{
+		PumteroJr->freeGraphicsMemoryForObject(&VertexArray);
+	}
+	return esamadre;
 }

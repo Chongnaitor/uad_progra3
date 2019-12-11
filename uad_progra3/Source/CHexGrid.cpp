@@ -109,7 +109,7 @@ void CHexGrid::FilasPorColumnas(COpenGLRenderer* const Lmao, unsigned int m_colo
 	{
 
 		
-		CreateGeometry(Lmao, m_colorModelShaderId, Pointy);
+		//CreateGeometry(Lmao, m_colorModelShaderId, Pointy);
 		for (int i = 0; i < m_Filas; i++)
 		{
 			std::vector<CVector3>Temp;
@@ -144,7 +144,7 @@ void CHexGrid::FilasPorColumnas(COpenGLRenderer* const Lmao, unsigned int m_colo
 	{
 
 		
-		CreateGeometry(Lmao, m_colorModelShaderId, Pointy);
+		//CreateGeometry(Lmao, m_colorModelShaderId, Pointy);
 		for (int i = 0; i < m_Filas; i++)
 		{
 			std::vector<CVector3>Temp;

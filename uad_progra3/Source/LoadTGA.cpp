@@ -37,7 +37,7 @@ extern "C" {
 		fread(&ucharBad, sizeof(unsigned char), 1, filePtr);
 		fread(&ucharBad, sizeof(unsigned char), 1, filePtr);
 
-		// Which type of image gets stored in imageTypeCode.
+		// Which type of image gets stored in imagetY()peCode.
 		fread(&tgaFile->imageTypeCode, sizeof(unsigned char), 1, filePtr);
 
 		// For our purposes, the type code should be 2 (uncompressed RGB image)

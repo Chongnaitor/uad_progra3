@@ -29,6 +29,11 @@ struct CHexGridCell
 
 
 	// Current object position
+
+
+
+
+
 	CVector3 m_objectPosition;
 
 	

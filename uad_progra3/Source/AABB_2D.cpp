@@ -26,7 +26,7 @@ void AABB_2D::getCorners(CVector3* c) {
 void AABB_2D::setCorners(CVector3* inCorners) {
 	//TODO:
 	//
-	for (int i; i < 4; i++) {
+	for (int i=0; i < 4; i++) {
 		corners[i] = inCorners[i];
 	}
 }

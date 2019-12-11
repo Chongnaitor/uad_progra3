@@ -2,7 +2,11 @@
 #include"../Include/CQuadTreeNode.h"
 #include <iostream>
 
-void CQuadTree::Subdivide(std::vector<CHexGridCell>* HexTotalCells, AABB_2D aabb)
+CQuadTree::CQuadTree()
+{
+}
+
+void CQuadTree::Subdivide(std::vector<std::vector<CVector3>>Hexcells, int limittri, AABB_2D aabb, int maxlimit)
 {
 
 
@@ -10,7 +14,7 @@ void CQuadTree::Subdivide(std::vector<CHexGridCell>* HexTotalCells, AABB_2D aabb
 		{
 			m_Root = new CQuadTreeNode();
 			m_Root->SetLimits(aabb);
-			m_Root->Subdivide(HexTotalCells, m_SubDivisionLimit,aabb);
+			m_Root->Subdivide2(Hexcells, limittri, aabb, 0, maxlimit);
 		}
 	
 

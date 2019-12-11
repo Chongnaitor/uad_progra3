@@ -11,6 +11,9 @@
 
 int main()
 {
+	CAppQuadTree * mApp = new CAppQuadTree();
+	mApp->run();
+	delete mApp;
 	return 0;
 }
 

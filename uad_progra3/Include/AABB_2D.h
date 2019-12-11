@@ -8,7 +8,7 @@ public:
 
 	void getCorners(CVector3*);
 	void setCorners(CVector3* inCorners);
-	bool pointsInside(CVector3[4]);
+	bool pointsInside(CVector3 *);
 	CVector3 corners[4];  
 	
 

@@ -7,13 +7,13 @@
 class CQuadTreeNode {
 public:
 	CQuadTreeNode();
-	void Subdivide(std::vector<CHexGridCell*> HexTotalCells, int TriLimit, AABB_2D QuadTreeBounds);
-	void Subdivide2(std::vector<std::vector<CHexGridCell>> HexTotalCells, int QuadTreeBounds, AABB_2D parentBounds);
+	void Subdivide(std::vector<CVector3*> HexTotalCells, int TriLimit, AABB_2D QuadTreeBounds, int currlimit, int maxlimit);
+	void Subdivide2(std::vector<std::vector<CVector3>> HexTotalCells, int QuadTreeBounds, AABB_2D parentBounds, int currlimit, int maxlimit);
 	void SetLimits(AABB_2D Limits);
 	AABB_2D m_Bounds;
-	std::vector<std::vector<CHexGridCell>>DataCopy;
+	std::vector<std::vector<CVector3>>DataCopy;
 	void render(COpenGLRenderer*Puntero, unsigned int ModelShad);
-	std::vector<CHexGridCell*>HexTotalCellsB;
+	std::vector<CVector3*>HexTotalCellsB;
 	CQuadTreeNode* SectorOne=nullptr;
 	CQuadTreeNode* SectorTwo=nullptr;
 	CQuadTreeNode* SectorTree=nullptr;
