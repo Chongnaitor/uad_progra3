@@ -137,7 +137,7 @@ void CAppQuadTree::initialize()
 	AABB_2D BOX;
 	BOX.setCorners(corners);
 
-	Arbolito.Subdivide(m_grid->Centros, 6, BOX, 2);
+	Arbolito.Subdivide(m_grid->Centros, 6, BOX, 1);
 	if (!Arbolito.m_Root->isRender(getOpenGLRenderer(), m_colorModelShaderId))
 	{
 		cout << "Valio verga la geometria del arbolito." << endl;
